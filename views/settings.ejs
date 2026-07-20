@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author settings</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Microblogging site</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="/author/home">Author page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/reader/home">Reader page</a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="#">Author settings<span class="sr-only">(current)</span></a>
+                  </li>
+            </ul>
+          </div>
+    </nav>
+
+    <h2 class="text-center">You can edit the details of your blog here:</h2>
+    <div class="spacer"></div>
+    <!--All threee form fields have a maximum input length of 255, in keeping with the VARCHAR(255) specification in the database-->
+    <div class="d-block" style="clear: both; display: grid;">
+        <form action="settings" method="POST">
+        <label for="title" style="display: block;">Blog title:</label>
+        <!--The "name" field is needed for the req.body to recognize it-->
+        <!--The "value" attribute puts in the current author details as a pre-existent input for the user to modifiy-->
+        <input type="text" id="title" name="title" value="<%= author[0].blogdata_title %>" maxlength="255" style="display: block;">
+        <label for="subtitle">Blog subtitle:</label>
+        <input type="text" id="subtitle" name="subtitle" value="<%= author[0].blogdata_subtitle %>" maxlength="255" style="display: block;">
+        <label for="name" style="display: block;">Author name:</label>
+        <input type="text" id="name" name="authorname" value="<%= author[0].blogdata_authorname %>" maxlength="255" >
+        <div class="spacer"></div>
+        <button type="submit" style="display: block;" class="btn btn-outline-primary">Update the author details</button>
+        <p><a href="/author/home">Back</a></p>
+        </form>
+    </div>
+</body>
+</html>

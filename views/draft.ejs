@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create a draft article page</title>
+        <link rel="stylesheet" href="/css/bootstrap.css">
+        <link rel="stylesheet" href="/css/custom.css">
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">Microblogging site</a>
+              <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                      <a class="nav-link" href="/author/home">Author page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/reader/home">Reader page</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/author/settings">Author settings</a>
+                      </li>
+                </ul>
+              </div>
+        </nav>
+
+        <div class="top-and-bottom-padding">
+            <h2>Edit your draft article here</h2>
+        </div>
+        
+        <form action="draft" method="POST">
+            <label for="title" style="display: block;">Title:</label>
+            <!--The "name" field is needed for the req.body to recognize it-->
+            <input type="text" id="title" name="title" style="display: block;">
+            <label for="subtitle" style="display: block;">Subtitle:</label>
+            <input type="text" id="subtitle" name="subtitle" style="display: block;">
+            <label for="name" style="display: block;">Write your article text here:</label>
+            <textarea name="articletext" style="display: block;"></textarea>
+            <div class="spacer"></div>
+            <button type="submit" class="btn btn-outline-primary">Create a new article</button>
+        </form>
+        
+    </body>
+</html>

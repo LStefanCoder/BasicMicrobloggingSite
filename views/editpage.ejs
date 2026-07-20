@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Edit article page</title>
+        <link rel="stylesheet" href="/css/bootstrap.css">
+        <link rel="stylesheet" href="/css/custom.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">Microblogging site</a>
+              <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                      <a class="nav-link" href="/author/home">Author page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/reader/home">Reader page</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/author/settings">Author settings</a>
+                      </li>
+                </ul>
+              </div>
+        </nav>
+
+        <!--An empty div to put a bit of space between the elements-->
+        <div class="top-and-bottom-padding">
+        <!--These are the values inserted from the user record database-->
+            <h5><b>Microblogger: </b>Edit article page</h5>
+            <h1 class="text-center"><%= author[0].blogdata_title %></h1>
+            <h2 class="text-center"><%= author[0].blogdata_subtitle %></h2>
+            <h3 class="text-center"><%= author[0].blogdata_authorname %></h3>
+        </div>
+
+        <!--Data about the article currently edited, including its status as a draft article-->
+        <div class="top-and-bottom-padding">
+        <ul class="list-group" style="width: 25rem">
+            <li class="list-group-item">Created: <%= article[0].createddate %></li>
+            <li class="list-group-item">Last modified: <%= article[0].updateddate %></li>
+            <li class="list-group-item">Status: Draft</li>
+        </ul></div>
+
+        <form action="<%= article[0].article_id %>" method="POST">
+            <label for="title">Title:</label>
+            <!--The "name" field is needed for the req.body to recognize it-->
+            <!--The "value" attribute puts in the current author details as a pre-existent input for the user to modifiy-->
+            <input type="text" id="title" name="title" value="<%= article[0].title %>" maxlength="255" style="display: block;">
+            <label for="subtitle" style="display: block;">Subtitle:</label>
+            <input type="text" id="subtitle" name="subtitle" value="<%= article[0].subtitle %>" maxlength="255" style="display: block;">
+            <label for="name" style="display: block;">Author name:</label>
+            <textarea type="text" id="articletext" name="articletext" style="display: block;"><%= article[0].articletext %></textarea>
+            <div class="spacer"></div>
+            <button type="submit" class="btn btn-outline-primary">Update</button>
+        </form>
+    </body>
+</html>

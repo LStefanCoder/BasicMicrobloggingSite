@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Reader homepage</title>
+        <link rel="stylesheet" href="/css/bootstrap.css">
+        <link rel="stylesheet" href="/css/custom.css">
+    </head>
+    <body>
+        <body style="padding: 5px;">
+            <!--used tip from https://stackoverflow.com/questions/19827605/change-bootstrap-navbar-collapse-breakpoint-without-using-less-->
+            <!--The "navbar-expand' makes sure that the menu never collapses"-->
+            <!--code based on the first example in https://getbootstrap.com/docs/4.0/components/navbar/-->
+            <nav class="navbar navbar-expand navbar-dark bg-primary">
+                <a class="navbar-brand" href="#">Microblogging site</a>
+                  <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                          <a class="nav-link" href="/author/home">Author page</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Reader page<span class="sr-only">(current)</span></a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="/author/settings">Author settings</a>
+                          </li>
+                    </ul>
+                  </div>
+            </nav>
+            <!--An empty div to put a bit of space between the elements-->
+            <div style="height: 20px;"></div>
+            <!--These are the values inserted from the user record database-->
+            <h5><b>Microblogger: </b>Reader page</h5>
+            <h1 class="text-center"><%= author[0].blogdata_title %></h1>
+            <h2 class="text-center"><%= author[0].blogdata_subtitle %></h2>
+            <h3 class="text-center"><%= author[0].blogdata_authorname %></h3>
+    
+            <!--The table with the draft articles-->
+            <h2 class="margin-b">Articles</h2>
+
+            <!--partially based on https://getbootstrap.com/docs/4.0/components/card/#text-alignment-->
+            <% for (var i = 0; i < published.length; i++) { %>
+                <div class="card bg-light" style="width: 25rem; margin-bottom: 25px;">
+                    <div class="bg-primary"><h2 class="card-header"><%= published[i].title %></h2></div>
+                    <div class="card-body">
+                        <h3 class="card-title"><%= published[i].subtitle %></h3>
+                        <h5 class="card-text">Posted on: <%= published[i].publisheddate %></h5>
+                    
+                        <button class="card-text btn-lg btn-outline-primary"><a href="article/" onclick="var value = '<%= published[i].article_id %>'; location.href = this.href + value; return false;">Read article</a></button>
+                    </div>   
+                </div>
+             <% } %>
+
+    </body>
+</html>

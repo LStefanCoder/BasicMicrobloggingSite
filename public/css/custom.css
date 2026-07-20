@@ -1,0 +1,27 @@
+/*Some custom-written CSS code*/
+
+/*Adding a bit of padding to all of the pages*/
+body {
+    padding: 5px;
+}
+
+/*since all textarea fields on this site should look the same, a general definition is enough*/
+textarea {
+    width: 500px;
+    height: 200px;
+}
+
+/*class used for some divs*/
+.spacer {
+    padding: 10px;
+}
+
+.top-and-bottom-padding {
+    padding-top: 20px; 
+    padding-bottom: 20px;
+}
+
+/*Gives a bottom margin of 10 px for elements with this class name*/
+.margin-b {
+    margin-bottom: 10px;
+}

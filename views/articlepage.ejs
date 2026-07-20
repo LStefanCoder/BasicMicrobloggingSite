@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Read article page</title>
+        <link rel="stylesheet" href="/css/bootstrap.css">
+        <link rel="stylesheet" href="/css/custom.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">Microblogging site</a>
+              <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                      <a class="nav-link" href="/author/home">Author page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/reader/home">Reader page</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/author/settings">Author settings</a>
+                      </li>
+                </ul>
+              </div>
+        </nav>
+
+        <!--An empty div to put a bit of space between the elements-->
+        <div class="top-and-bottom-padding">
+        <!--These are the values inserted from the user record database-->
+            <h5><b>Microblogger: </b>Reader page</h5>
+            <h1 class="text-center"><%= author[0].blogdata_title %></h1>
+            <h2 class="text-center"><%= author[0].blogdata_subtitle %></h2>
+            <h3 class="text-center"><%= author[0].blogdata_authorname %></h3>
+            <div class="top-and-bottom-padding">
+                <ul class="list-group" style="width: 25rem">
+                    <li class="list-group-item">Created: <%= article[0].publisheddate %></li>
+                    <li class="list-group-item">Last modified: <%= article[0].updateddate %></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="top-and-bottom-padding">
+            <h1 class="text-center"><%= article[0].title %></h1>
+            <h2 class="text-center"><%= article[0].subtitle %></h2>
+        </div>
+
+        <!--All of the article text is simply included in one <p> tag.-->
+        <p><%= article[0].articletext %></p>
+
+
+        <button onclick="value='<%= article[0].article_id %>'; fetch('/reader/upthelikes/' + value, {method: 'GET'}); window.location.reload()" class="btn btn-outline-primary">LIKE</button>
+        <p>Number of likes: <%= article[0].numberoflikes %></p>
+
+        <div class="spacer"></div>
+        <a href="/reader/home"><button class="btn btn-outline-primary">Back</button></a>
+        <div class="spacer"></div>
+
+        <h4>Comments</h4>
+        <h5>Type your comment here:</h5>
+        <!--Comment input box with a maxlength of 255, in order to keep the comments relatively short-->
+        <input type="text" name="comment" maxlength="255" id="commentinputbox">
+        <button type="submit" value="<%= article[0].article_id %>" onclick="value1='<%= article[0].article_id %>'; value2= document.getElementById('commentinputbox').value;
+        console.log(value2); fetch('/reader/addcomment/' + value1 + '/' + value2, {method: 'GET'}); window.location.reload()" class="btn btn-outline-primary">Send comment</button>
+
+        <div class="spacer"></div>
+
+        <% for(var i = 0; i < comments.length; i++) { %>
+            <div>
+                <div class="card bg-light" style="width: 25rem; margin-bottom: 25px;">
+                    <div class="card-body">
+                        <p class="card-text"><%= comments[i].commenttext %></p>
+                        <p class="card-text">Posted on: <%= comments[i].posteddate %></p>
+                    </div>   
+                </div>
+            </div>
+        <% } %>
+
+    </body>
+</html>
