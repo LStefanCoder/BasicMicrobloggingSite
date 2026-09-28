@@ -5,24 +5,21 @@ Originally written as a midterm project for CM2040 Database Networks and the Web
 
 Node.js needs to be installed for the program to run. 
 
-Original commands in the template provided by the university follow. 
+The following commands are from the . 
 
 To install all the node packages run ```npm install``` from the project directory
 
 Run ```npm run build-db``` to create the database (database.db)
-Run ```npm run start``` to start serving the web app (Access via http://localhost:3000)
-
-You can also run: 
-```npm run clean-db``` to delete the database before rebuilding it for a fresh start
+Run ```npm run start``` to start serving the web app (can be accessed with the URL http://localhost:3000)
+Run ```npm run clean-db``` to delete the database before rebuilding it for a fresh start
 
 ## Function
 
-With this application, the user is able to write text articles, save them as a draft and publish them. Comments can be added to each of the articles. 
+With this application, the user is able to write text articles, save them as draft articles and later publish them. Comments can be added to each of the articles. 
 
-## Accessing the author and the reader pages ###
+## Accessing the author and the reader pages
 
 The author page is available under localhost:3000/author/home, and the reader page is on localhost:3000/reader/home, the draft page under localhost:3000/author/draft, and the settings page under localhost:3000/author/settings.
-
 
 ## Note on operating systems
 
